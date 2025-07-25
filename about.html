@@ -17,7 +17,8 @@
     
     <nav>
         <div class="container">
-            <ul>
+            <button class="mobile-nav-toggle" onclick="toggleMobileNav()">☰</button>
+            <ul id="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html" class="active">About</a></li>
                 <li><a href="research.html">Research Portfolio</a></li>
@@ -99,35 +100,35 @@
             </section>
 
             <section>
-    <h2>Research Interests & Specializations</h2>
-    
-    <div class="skills-grid" style="grid-template-columns: repeat(3, 1fr);">
-        <div class="skill-category">
-            <h3>Research Areas</h3>
-            <p>• Underwater Archaeology<br>
-            • Maritime Cultural Heritage Management<br>
-            • Archival Research and Historical Archaeology<br>
-            • Nautical Archaeology and Archaeological Tourism<br>
-            • 3D Documentation and Digital Heritage</p>
-        </div>
-        
-        <div class="skill-category">
-            <h3>Geographic Focus</h3>
-            <p>• Taiwan and East Asian Waters<br>
-            • Mediterranean Sea<br>
-            • Cross-Cultural Maritime Exchange</p>
-        </div>
-        
-        <div class="skill-category">
-            <h3>Professional Interests</h3>
-            <p>• Underwater Survey and Excavation<br>
-            • 3D Scanning and Photogrammetry<br>
-            • Archival and Historical Research<br>
-            • Maritime Museum Collections<br>
-            • Public Archaeology</p>
-        </div>
-    </div>
-</section>
+                <h2>Research Interests & Specializations</h2>
+                
+                <div class="skills-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    <div class="skill-category">
+                        <h3>Research Areas</h3>
+                        <p>• Underwater Archaeology<br>
+                        • Maritime Cultural Heritage Management<br>
+                        • Archival Research and Historical Archaeology<br>
+                        • Nautical Archaeology and Archaeological Tourism<br>
+                        • 3D Documentation and Digital Heritage</p>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Geographic Focus</h3>
+                        <p>• Taiwan and East Asian Waters<br>
+                        • Mediterranean Sea<br>
+                        • Cross-Cultural Maritime Exchange</p>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Professional Interests</h3>
+                        <p>• Underwater Survey and Excavation<br>
+                        • 3D Scanning and Photogrammetry<br>
+                        • Archival and Historical Research<br>
+                        • Maritime Museum Collections<br>
+                        • Public Archaeology</p>
+                    </div>
+                </div>
+            </section>
 
             <section>
                 <h2>Skills & Certifications</h2>
@@ -155,9 +156,10 @@
                         Advanced Open Water & Open Water (PADI)<br>
                         French Scientific Diver (Certificat d'aptitude à l'Hyperbarie classe 0 de la mention B)</p>
                     </div>
-                
                 </div>
             </section>
+        </div>
+    </main>
 
     <footer>
         <div class="container">
@@ -167,6 +169,28 @@
     </footer>
 
     <script>
+        // Mobile navigation toggle
+        function toggleMobileNav() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        }
+        
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+        
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', (e) => {
+            const nav = document.querySelector('nav');
+            const toggle = document.querySelector('.mobile-nav-toggle');
+            if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                document.getElementById('nav-menu').classList.remove('active');
+            }
+        });
+
         // Add smooth scrolling for older browsers
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
