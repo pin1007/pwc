@@ -109,7 +109,11 @@ nav {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
+}
+
+nav .container {
+    position: relative;
 }
 
 nav ul {
@@ -137,6 +141,26 @@ nav ul li a:hover,
 nav ul li a.active {
     color: #3498db;
     background: rgba(52, 152, 219, 0.1);
+}
+
+/* Mobile Navigation Toggle Button */
+.mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: #2c3e50;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 1001;
+    transition: color 0.3s;
+}
+
+.mobile-nav-toggle:hover {
+    color: #3498db;
 }
 
 /* Main Content */
@@ -401,41 +425,88 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Mobile Navigation Styles */
+    .mobile-nav-toggle {
+        display: block;
+    }
+    
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+        flex-direction: column;
+        padding: 20px 0;
+        margin: 0;
+    }
+    
+    nav ul.active {
+        display: flex;
+    }
+    
+    nav ul li {
+        margin: 0;
+        text-align: center;
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    nav ul li:last-child {
+        border-bottom: none;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 12px 20px;
+        font-size: 1.1em;
+        width: 100%;
+    }
+    
+    /* Header responsive styles */
     .header-card {
         padding: 30px 20px;
+        margin: 0 15px;
     }
     
     .header-card h1 {
         font-size: 2.2em;
     }
     
+    .header-card .subtitle {
+        font-size: 1.2em;
+    }
+    
+    .header-card .institution {
+        font-size: 1em;
+    }
+    
     /* 優化聯絡方式在手機版的顯示 */
-    .header-card div:last-child {
-        gap: 15px !important;
-    }
-    
-    .header-card div:last-child a {
-        font-size: 0.9em !important;
-        padding: 5px 8px !important;
-    }
-    
     .contact-links {
         flex-direction: column;
         gap: 10px;
     }
     
-    nav ul {
-        flex-direction: column;
-        align-items: center;
+    .contact-links a {
+        font-size: 0.9em;
+        padding: 8px 12px;
     }
     
-    nav ul li {
-        margin: 5px 0;
+    /* Content responsive styles */
+    .container {
+        padding: 0 15px;
     }
     
     section {
-        padding: 25px;
+        padding: 25px 20px;
         margin: 20px 0;
+    }
+    
+    h2 {
+        font-size: 1.6em;
     }
     
     .timeline-header {
@@ -449,6 +520,57 @@ footer {
     
     .research-gallery {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    
+    .research-image {
+        height: 200px;
+    }
+    
+    .contact-grid {
+        display: block;
+    }
+    
+    .contact-item {
+        margin-bottom: 25px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .profile-photo img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .header-card {
+        padding: 20px 15px;
+        margin: 0 10px;
+    }
+    
+    .header-card h1 {
+        font-size: 1.8em;
+    }
+    
+    .research-gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    section {
+        padding: 20px 15px;
+    }
+    
+    .container {
+        padding: 0 10px;
     }
 }
 
