@@ -409,6 +409,16 @@ footer {
         font-size: 2.2em;
     }
     
+    /* 優化聯絡方式在手機版的顯示 */
+    .header-card div:last-child {
+        gap: 15px !important;
+    }
+    
+    .header-card div:last-child a {
+        font-size: 0.9em !important;
+        padding: 5px 8px !important;
+    }
+    
     .contact-links {
         flex-direction: column;
         gap: 10px;
